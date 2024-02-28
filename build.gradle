@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish' 
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'org.vulture.ide'
+            artifactId = 'the-unsafe'
+            version = '1.0.0' 
+                                
+            from components.java
+        }
+    }
+}
